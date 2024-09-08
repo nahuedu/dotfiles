@@ -12,3 +12,4 @@ My dot files and configs
 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) <br>
 [fzf](https://github.com/junegunn/fzf) <br>
 [fzf-git.sh](https://github.com/junegunn/fzf-git.sh) <br>
+[oh-my-posh](https://ohmyposh.dev/) <br>
