@@ -1,4 +1,7 @@
 
+# color for autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
