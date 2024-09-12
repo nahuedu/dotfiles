@@ -1,7 +1,7 @@
 
 # load oh-my-posh if not apple terminal
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-   eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/robbyrussell.omp.json)"
+   eval "$(oh-my-posh init zsh --config ~/.nano.omp.json)"
 fi
 
 # color for autosuggestions
