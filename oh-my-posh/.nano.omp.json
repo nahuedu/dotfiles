@@ -14,15 +14,17 @@
           "properties": {
             "style": "folder"
           },
-          "foreground": "#56B6C2"
+          "foreground": "blue"
         },
         {
           "type": "git",
           "style": "plain",
+          
           "properties": {
-            "branch_icon": "\udb81\ude2c"
+            "fetch_status": true,
+            "branch_icon": "\udb81\ude2c "
           },
-          "foreground": "#D0666F"
+          "foreground": "red"
         }
       ]
     },
