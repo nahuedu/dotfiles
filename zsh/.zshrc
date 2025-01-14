@@ -19,3 +19,6 @@ source ~/Developer/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh syntax highlight (must be at the end)
 source ~/Developer/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# bat theme
+export BAT_THEME=Dracula
+
