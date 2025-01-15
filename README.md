@@ -4,6 +4,7 @@ My dot files and configs
 - .zshrc for zsh
 - profile file for iterm2
 - config file for alacritty
+- config file for ghostty
 - [SF Mono](https://developer.apple.com/fonts/) font patched with [nerd fonts script](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#font-patcher) using e.g. `fontforge -script font-patcher -out patched -c sf/SF-Mono-Medium.otf`
 
 [poimandres-theme](https://github.com/drcmda/poimandres-theme) <br>
