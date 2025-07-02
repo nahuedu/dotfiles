@@ -22,3 +22,5 @@ source ~/Developer/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # bat theme
 export BAT_THEME=Dracula
 
+# quick links alias
+alias q="cat $HOME/.quicklinks | jq -r '\"\(.name) - \(.link)\"' | fzf -d '-' --bind 'enter:become(open {2})'"

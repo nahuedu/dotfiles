@@ -4,5 +4,5 @@ adjust-cell-width = -2
 theme = "rose-pine"
 background-opacity = 0.95
 background-blur-radius = 20
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:cmd+space=toggle_quick_terminal
 quick-terminal-animation-duration = 0.1
