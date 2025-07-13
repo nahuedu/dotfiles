@@ -2,7 +2,7 @@ font-size = 19
 font-family = "SF Mono"
 adjust-cell-width = -2
 # theme = "rose-pine"
-theme = catppuccin-latte
+theme = zenwritten_light
 background-opacity = 0.85
 background-blur=50
 keybind = global:cmd+space=toggle_quick_terminal
