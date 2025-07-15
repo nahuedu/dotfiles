@@ -20,7 +20,18 @@ source ~/Developer/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/Developer/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # bat theme
-export BAT_THEME=Dracula
+export BAT_THEME=ansi
 
 # quick links alias
 alias q="cat $HOME/.quicklinks | jq -r '.[] | \"\(.name) - \(.link)\"' | fzf -d '-' --bind 'enter:become(open {2})'"
+
+
+export N_CHROME_PROFILE_DIR=Default
+func hist() {
+    sqlite3 "$HOME/Library/Application Support/Google/Chrome/$N_CHROME_PROFILE_DIR/History" "select distinct id as id, title as title, url as url, datetime(last_visit_time / 1000000 + (strftime('%s', '1601-01-01')), 'unixepoch', 'localtime') as lastVisitTime, visit_count as visitCount from urls" | fzf
+}
+
+func bm() {
+    # jq 'def r(f): .name as $n | map(if .type == "folder" then .children | r($n + "-" + .) else .url + (.name | f) end); .roots.other.children | r(.)' "$HOME/Library/Application Support/Google/Chrome/Default/Bookmarks"
+    jq 'def r: map(if .type == "folder" then .children | r | .[] else .name + "-" + .url end); .roots.other.children | r' "$HOME/Library/Application Support/Google/Chrome/$N_CHROME_PROFILE_DIR/Bookmarks"
+}
