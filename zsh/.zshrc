@@ -19,6 +19,9 @@ source ~/Developer/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh syntax highlight (must be at the end)
 source ~/Developer/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# fzf default ops
+export FZF_DEFAULT_OPTS="--style full --preview 'bat --color=always {}'"
+
 # bat theme
 export BAT_THEME=ansi
 
