@@ -1,7 +1,9 @@
+export XDG_CONFIG_HOME=$(dirname $0 | xargs realpath)
+echo "set XDG_CONFIG_HOME to $XDG_CONFIG_HOME"
 
 # load oh-my-posh if not apple terminal
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-   eval "$(oh-my-posh init zsh --config ~/.nano.omp.json)"
+   eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/nano.omp.json)"
 fi
 
 # color for autosuggestions
@@ -11,22 +13,22 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 source <(fzf --zsh)
 
 # git bindings for fzf
-source ~/Developer/fzf-git.sh/fzf-git.sh
+source $XDG_CONFIG_HOME/fzf-git.sh/fzf-git.sh
 
 # zsh autosuggestions
-source ~/Developer/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $XDG_CONFIG_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh syntax highlight (must be at the end)
-source ~/Developer/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_CONFIG_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fzf default ops
-export FZF_DEFAULT_OPTS="--style full --preview 'bat --color=always {}'"
+export FZF_DEFAULT_OPTS="--style full"
 
 # bat theme
 export BAT_THEME=ansi
 
 # quick links alias
-alias q="cat $HOME/.quicklinks | jq -r '.[] | \"\(.name) - \(.link)\"' | fzf -d '-' --bind 'enter:become(open {2})'"
+alias q="cat $XDG_CONFIG_HOME/.quicklinks | jq -r '.[] | \"\(.name) - \(.link)\"' | fzf -d '-' --bind 'enter:become(open {2})'"
 
 
 export N_CHROME_PROFILE_DIR=Default

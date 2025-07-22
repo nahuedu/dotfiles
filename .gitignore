@@ -1,2 +1,4 @@
 .DS_Store
-
+fzf-git.sh
+zsh-autosuggestions
+zsh-syntax-highlighting
