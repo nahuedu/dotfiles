@@ -1,4 +1,10 @@
-brew install bat
-brew install fzf
-brew install fd
+cp -iv .zshrc $HOME
+
+mkdir -p $HOME/.config/ghostty 
+cp -ivr ghostty/config $HOME/.config/ghostty 
+
+mkdir -p $HOME/.config/omp
+cp -ivr omp/nano.omp.json $HOME/.config/omp
+
+brew install bat fzf fd jq yq jo jandedobbeleer/oh-my-posh/oh-my-posh
 

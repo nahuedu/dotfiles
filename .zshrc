@@ -1,9 +1,15 @@
-export XDG_CONFIG_HOME=$(dirname $0 | xargs realpath)
-echo "set XDG_CONFIG_HOME to $XDG_CONFIG_HOME"
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '~/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+autoload -U colors && colors
 
 # load oh-my-posh if not apple terminal
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-   eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/nano.omp.json)"
+   eval "$(oh-my-posh init zsh --config $HOME/.config/omp/nano.omp.json)"
 fi
 
 # color for autosuggestions
@@ -11,15 +17,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
-# git bindings for fzf
-source $XDG_CONFIG_HOME/fzf-git.sh/fzf-git.sh
-
-# zsh autosuggestions
-source $XDG_CONFIG_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh syntax highlight (must be at the end)
-source $XDG_CONFIG_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fzf default ops
 export FZF_DEFAULT_OPTS="--style full"
