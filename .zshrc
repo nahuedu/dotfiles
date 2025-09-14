@@ -1,4 +1,16 @@
 
+PLUGINS_HOME=$HOME/.zsh_plugins
+[ ! -d $PLUGINS_HOME ] && mkdir -p $PLUGINS_HOME
+
+[ ! -d $PLUGINS_HOME/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
+source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[ ! -d $PLUGINS_HOME/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
+source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ ! -d $PLUGINS_HOME/zsh-completions ] && git clone https://github.com/zsh-users/zsh-completions.git $PLUGINS_HOME/zsh-completions
+fpath=($PLUGINS_HOME/zsh-completions/src $fpath)
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
