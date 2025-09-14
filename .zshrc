@@ -2,22 +2,52 @@
 PLUGINS_HOME=$HOME/.zsh_plugins
 [ ! -d $PLUGINS_HOME ] && mkdir -p $PLUGINS_HOME
 
-[ ! -d $PLUGINS_HOME/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
-source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-[ ! -d $PLUGINS_HOME/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
-source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+# completions
 [ ! -d $PLUGINS_HOME/zsh-completions ] && git clone https://github.com/zsh-users/zsh-completions.git $PLUGINS_HOME/zsh-completions
 fpath=($PLUGINS_HOME/zsh-completions/src $fpath)
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '~/.zshrc'
-
-autoload -Uz compinit
+autoload -U compinit
 compinit
-# End of lines added by compinstall
-autoload -U colors && colors
+
+# fzf tab completions
+[ ! -d $PLUGINS_HOME/fzf-tab ] && git clone https://github.com/Aloxaf/fzf-tab $PLUGINS_HOME/fzf-tab
+source $PLUGINS_HOME/fzf-tab/fzf-tab.plugin.zsh
+
+# auto suggestions
+[ ! -d $PLUGINS_HOME/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
+source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# syntax highlight
+[ ! -d $PLUGINS_HOME/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
+source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# case insensitive autocomplete
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# colors in autocomplete results
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# disable default zsh completions menu
+zstyle ':completion:*' menu no
+
+# directory preview for fzf-tab completion menu
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+# basic aliases
+alias ls='ls --color'
 
 # load oh-my-posh if not apple terminal
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
