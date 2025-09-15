@@ -1,7 +1,7 @@
 font-size = 19
 font-family = "JetBrains Mono"
 # adjust-cell-width = -2
-theme = "rose-pine"
+theme = "Rose Pine"
 # background-opacity = 0.85
 # background-blur=50
 keybind = global:opt+space=toggle_quick_terminal
