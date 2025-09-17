@@ -85,5 +85,10 @@ snp() {
   cat $HOME/.snippets/snippetslab.json | jq -r --raw-output0 '.contents.snippets | map({title:.title, content: .fragments[0].content}) | .[] | "\(.title)#\(.content)"' | fzf --read0 -d '#' --with-nth='{1}' --preview='echo {2} | bat' --accept-nth='{2}'
 }
 
+# git diff fzf
+gdiff () {
+  git diff --name-only --merge-base master | fzf --preview='git diff --merge-base master {}'
+}
+
 # run environment hooks
 source $HOME/.env_hooks
