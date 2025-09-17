@@ -72,7 +72,7 @@ alias q="cat $XDG_CONFIG_HOME/.quicklinks | jq -r '.[] | \"\(.name) - \(.link)\"
 
 export N_CHROME_PROFILE_DIR=Default
 func hist() {
-    sqlite3 "$HOME/Library/Application Support/Google/Chrome/$N_CHROME_PROFILE_DIR/History" "select distinct id as id, title as title, url as url, datetime(last_visit_time / 1000000 + (strftime('%s', '1601-01-01')), 'unixepoch', 'localtime') as lastVisitTime, visit_count as visitCount from urls" | fzf
+sqlite3 "$HOME/Library/Application Support/Google/Chrome/$N_CHROME_PROFILE_DIR/History" "select distinct id as id, title as title, url as url, datetime(last_visit_time / 1000000 + (strftime('%s', '1601-01-01')), 'unixepoch', 'localtime') as lastVisitTime, visit_count as visitCount from urls" | fzf -d '|' --with-nth='{2}' --preview='echo {3}' --bind 'enter:execute(open {3})' --wrap --wrap-sign='' --gap --gap-line
 }
 
 func bm() {
@@ -86,7 +86,7 @@ snp() {
 }
 
 # git diff fzf
-gdiff () {
+gd () {
   git diff --name-only --merge-base master | fzf --preview='git diff --color=always --merge-base master {}'
 }
 
