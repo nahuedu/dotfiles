@@ -87,7 +87,13 @@ snp() {
 
 # git diff fzf
 gd () {
-  git diff --name-only --merge-base master | fzf --preview='git diff --color=always --merge-base master {}'
+  if [[ -a .git/refs/heads/master ]]; then
+    branch=master
+  else
+    branch=main
+  fi
+
+  git diff --name-only --merge-base $branch | fzf --preview="git diff --color=always --merge-base $branch {}"
 }
 
 # run environment hooks
