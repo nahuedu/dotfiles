@@ -85,7 +85,7 @@ snp() {
   cat $HOME/.snippets/snippetslab.json | jq -r --raw-output0 '.contents.snippets | map({title:.title, content: .fragments[0].content}) | .[] | "\(.title)#\(.content)"' | fzf --read0 -d '#' --with-nth='{1}' --preview='echo {2} | bat -p --color=always -l zsh' --accept-nth='{2}'
 }
 
-# git diff fzf
+# git diff fzf (current branch)
 gd () {
   if [[ -a .git/refs/heads/master ]]; then
     branch=master
@@ -95,6 +95,17 @@ gd () {
 
   git diff --name-only --merge-base $branch | fzf --preview="git diff --color=always --merge-base $branch {}"
 }
+
+# git diff fzf (local changes)
+gs () {
+  staged=$(git diff --staged --name-only)
+  nstaged=$(git diff --name-only)
+  list=(${^staged}"|staged" ${^nstaged}"|nstaged")
+
+  echo ${(F)list} | fzf -d "|" --with-nth='{1} ({2})' --preview="if [[ {2} == staged ]] then git diff --color=always --staged {1}; else git diff --color=always {1}; fi"
+}
+
+#test
 
 # run environment hooks
 source $HOME/.env_hooks
