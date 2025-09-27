@@ -93,7 +93,7 @@ gd () {
     branch=main
   fi
 
-  git diff --name-only --merge-base $branch | fzf --preview="git diff --color=always --merge-base $branch {}"
+  git diff --name-only --merge-base $branch | fzf --wrap --preview-window=wrap --preview="git diff --color=always --merge-base $branch {}"
 }
 
 # git diff fzf (local changes)
@@ -102,10 +102,8 @@ gs () {
   nstaged=$(git diff --name-only)
   list=(${^staged}"|staged" ${^nstaged}"|nstaged")
 
-  echo ${(F)list} | fzf -d "|" --with-nth='{1} ({2})' --preview="if [[ {2} == staged ]] then git diff --color=always --staged {1}; else git diff --color=always {1}; fi"
+  echo ${(F)list} | fzf --preview-window=wrap -d "|" --wrap --with-nth='{1} ({2})' --preview="if [[ {2} == staged ]] then git diff --color=always --staged {1}; else git diff --color=always {1}; fi"
 }
-
-#test
 
 # run environment hooks
 source $HOME/.env_hooks
