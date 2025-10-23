@@ -85,6 +85,12 @@ snp() {
   cat $HOME/.snippets/snippetslab.json | jq -r --raw-output0 '.contents.snippets | map({title:.title, content: .fragments[0].content}) | .[] | "\(.title)#\(.content)"' | fzf --read0 -d '#' --with-nth='{1}' --preview='echo {2} | bat -p --color=always -l zsh' --accept-nth='{2}'
 }
 
+# quick links
+l() {
+  url=$(cat $HOME/.links | fzf)
+  open $url
+}
+
 # git diff fzf (current branch)
 gd () {
   if [[ -a .git/refs/heads/master ]]; then
