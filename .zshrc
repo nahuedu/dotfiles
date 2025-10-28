@@ -82,7 +82,26 @@ func bm() {
 
 # snippets
 snp() {
-  cat $HOME/.snippets/snippetslab.json | jq -r --raw-output0 '.contents.snippets | map({title:.title, content: .fragments[0].content}) | .[] | "\(.title)#\(.content)"' | fzf --read0 -d '#' --with-nth='{1}' --preview='echo {2} | bat -p --color=always -l zsh' --accept-nth='{2}'
+  for s in $HOME/.snippets/*; do
+    lines=($(cat $s))
+  done
+  echo $lines[1]
+}
+
+move_window() {
+  text=$1
+  ws=$2
+  window_id=$(aerospace list-windows --all --json | jq --arg t $text 'map(select(.["app-name"] | test($t))) | .[] | .["window-id"]')
+  if [[ -z $window_id ]]; then
+    echo "no window found"
+  else
+    aerospace move-node-to-workspace --window-id $window_id $ws
+  fi
+}
+
+startup() {
+  open /Applications/WhatsApp.localized/WhatsApp.app
+  sleep 0.2
 }
 
 # quick links
@@ -93,13 +112,18 @@ l() {
 
 # git diff fzf (current branch)
 gd () {
-  if [[ -a .git/refs/heads/master ]]; then
+
+  if [[ -v 1 ]]; then
+    branch=$1
+  elif [[ -a .git/refs/heads/master ]]; then
     branch=master
   else
     branch=main
   fi
 
-  git diff --name-only --merge-base $branch | fzf --wrap --preview-window=wrap --preview="git diff --color=always --merge-base $branch {}"
+  files=$(git diff --name-only --merge-base $branch HEAD)
+
+  echo $files | fzf --wrap --preview-window=wrap --preview="git diff --color=always --merge-base $branch HEAD -- {}"
 }
 
 # git diff fzf (local changes)
