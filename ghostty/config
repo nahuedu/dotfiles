@@ -4,9 +4,9 @@ font-family = "JetBrains Mono"
 theme = "Rose Pine"
 # background-opacity = 0.85
 # background-blur=50
-keybind = global:opt+space=toggle_quick_terminal
+# keybind = global:opt+space=toggle_quick_terminal
 quick-terminal-animation-duration = 0.1
 quick-terminal-position = center
 macos-titlebar-style = tabs
-title = " "
+# title = " "
 window-padding-x = 5

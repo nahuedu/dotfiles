@@ -13,6 +13,10 @@ compinit
 [ ! -d $PLUGINS_HOME/fzf-tab ] && git clone https://github.com/Aloxaf/fzf-tab $PLUGINS_HOME/fzf-tab
 source $PLUGINS_HOME/fzf-tab/fzf-tab.plugin.zsh
 
+# fzf git integration
+[ ! -d $PLUGINS_HOME/fzf-git.sh ] && git clone https://github.com/junegunn/fzf-git.sh $PLUGINS_HOME/fzf-git.sh
+source $PLUGINS_HOME/fzf-git.sh/fzf-git.sh
+
 # auto suggestions
 [ ! -d $PLUGINS_HOME/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions.git $PLUGINS_HOME/zsh-autosuggestions
 source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
