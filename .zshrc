@@ -25,6 +25,9 @@ source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ ! -d $PLUGINS_HOME/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
 source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# intellij executable
+PATH="$PATH:$HOME/.config/intellintellj"
+
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history

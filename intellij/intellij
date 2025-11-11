@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+if [[ -a '/Applications/IntelliJ IDEA Ultimate.app' ]]; then
+  open -na "IntelliJ IDEA Ultimate.app" --args "$@"
+elif [[ -a '/Applications/Intellij IDEA CE.app' ]]; then
+  open -na "IntelliJ IDEA CE.app" --args "$@"
+else
+  echo "IntelliJ IDEA not found"
+fi
