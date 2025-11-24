@@ -89,10 +89,7 @@ func bm() {
 
 # snippets
 snp() {
-  for s in $HOME/.snippets/*; do
-    lines=($(cat $s))
-  done
-  echo $lines[1]
+    fzf --preview='bat {}' --walker-root="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/main/Snippets" --delimiter "/" --with-nth='{-1}'
 }
 
 move_window() {
