@@ -41,3 +41,42 @@ hs.hotkey.bind({"alt", "ctrl"}, "Right", function()
   f.h = max.h
   win:setFrame(f)
 end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "Up", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w * 0.1)
+  f.y = max.y
+  f.w = max.w * 0.8
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h
+  win:setFrame(f)
+end)
