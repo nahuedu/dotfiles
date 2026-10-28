@@ -25,9 +25,6 @@ source $PLUGINS_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ ! -d $PLUGINS_HOME/zsh-syntax-highlighting ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $PLUGINS_HOME/zsh-syntax-highlighting
 source $PLUGINS_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# intellij executable
-PATH="$PATH:$HOME/.config/intellintellj"
-
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -101,11 +98,6 @@ move_window() {
   else
     aerospace move-node-to-workspace --window-id $window_id $ws
   fi
-}
-
-startup() {
-  open /Applications/WhatsApp.localized/WhatsApp.app
-  sleep 0.2
 }
 
 # quick links
